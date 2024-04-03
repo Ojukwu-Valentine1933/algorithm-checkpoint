@@ -1,0 +1,28 @@
+ALGORITHM: AnalyzeSentence
+INPUT: A sentence ending with a period (sentence)
+OUTPUT: Length of the sentence (sentenceLength), number of words (wordCount), number of vowels (vowelCount)
+
+s := 0;
+n := 1;
+sentenceLength := 0;
+wordCount := 0;
+vowelCount := 0;
+
+FOR i FROM 0 TO LENGTH(sentence) - 1 DO
+    currentChar := CHARACTER_AT(sentence, i);
+    sentenceLength := sentenceLength + 1;
+
+    IF IS_LETTER(currentChar) THEN
+        IF (i = 0 OR CHARACTER_AT(sentence, i - 1) = ' ') AND currentChar ≠ ' ' THEN
+            wordCount := wordCount + 1;
+        END_IF
+
+        IF IS_VOWEL(currentChar) THEN
+            vowelCount := vowelCount + 1;
+        END_IF
+    END_IF
+END_FOR
+
+OUTPUT sentenceLength, wordCount, vowelCount;
+
+
